@@ -2,6 +2,10 @@ from matrix_class import *
 from input_handler import *
 import os
 
+FIRST_INPUT = 'Enter size of first matrix: '
+SECOND_INPUT = 'Enter size of second matrix: '
+SINGLE_INPUT = 'Enter size of matrix: '
+CONST_INPUT = 'Enter constant: '
 while True:
     os.system('cls')
     print('1. Add matrices')
@@ -19,25 +23,19 @@ while True:
     # ------------------------------------------------------------------------------------------------
     if choice == 1:
 
-        first_dimensions = input('Enter size of first matrix: ')
-        matrix_a = Matrix(process_input(first_dimensions))
-        second_dimensions = input('Enter size of second matrix: ')
-        matrix_b = Matrix(process_input(second_dimensions))
+        matrix_a = Matrix(process_input(input(FIRST_INPUT)))
+        matrix_b = Matrix(process_input(input(SECOND_INPUT)))
         matrix_a.add_matrix(matrix_b)
     # ------------------------------------------------------------------------------------------------
     elif choice == 2:
 
-        dimensions = input('Enter size of matrix: ')
-        matrix_a = Matrix(process_input(dimensions))
-        constant = float(input('Enter constant: '))
-        matrix_a.multiply_by_scalar(constant)
+        matrix_a = Matrix(process_input(input(SINGLE_INPUT)))
+        matrix_a.multiply_by_scalar(float(input(CONST_INPUT)))
     # ------------------------------------------------------------------------------------------------
     elif choice == 3:
 
-        first_dimensions = input('Enter size of first matrix: ')
-        matrix_a = Matrix(process_input(first_dimensions))
-        second_dimensions = input('Enter size of second matrix: ')
-        matrix_b = Matrix(process_input(second_dimensions))
+        matrix_a = Matrix(process_input(input(FIRST_INPUT)))
+        matrix_b = Matrix(process_input(input(SECOND_INPUT)))
         matrix_a.multiply_by_matrix(matrix_b)
     # ------------------------------------------------------------------------------------------------
     elif choice == 4:
@@ -49,26 +47,22 @@ while True:
         # --------------------------------------------------------------------------------------------
         if option == 1:
 
-            dimensions = input('Enter size of matrix: ')
-            matrix = Matrix(process_input(dimensions))
+            matrix = Matrix(process_input(input(SINGLE_INPUT)))
             matrix.transpose_main()
         # --------------------------------------------------------------------------------------------
         elif option == 2:
 
-            dimensions = input('Enter size of matrix: ')
-            matrix = Matrix(process_input(dimensions))
+            matrix = Matrix(process_input(input(SINGLE_INPUT)))
             matrix.transpose_side()
         # --------------------------------------------------------------------------------------------
         elif option == 3:
 
-            dimensions = input('Enter size of matrix: ')
-            matrix = Matrix(process_input(dimensions))
+            matrix = Matrix(process_input(input(SINGLE_INPUT)))
             matrix.transpose_vertical()
         # --------------------------------------------------------------------------------------------
         elif option == 4:
 
-            dimensions = input('Enter size of matrix: ')
-            matrix = Matrix(process_input(dimensions))
+            matrix = Matrix(process_input(input(SINGLE_INPUT)))
             matrix.transpose_horizontal()
         # --------------------------------------------------------------------------------------------
         else:

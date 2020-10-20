@@ -1,5 +1,6 @@
 from string import digits
 
+
 def digits_only_input(string) -> bool:
     accepted = digits + ' -.'
     for element in string:
