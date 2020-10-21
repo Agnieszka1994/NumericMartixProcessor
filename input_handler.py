@@ -1,11 +1,18 @@
 from string import digits
 
 
-def digits_only_input(string) -> bool:
+def split_and_cast_to_list(digits_only_string):
+    return list(map(int, digits_only_string.split()))
+
+
+def split_and_cast_to_floats(digits_only_string):
+    return list(map(float, digits_only_string.split()))
+
+
+def digits_only_input(string_input) -> bool:
     accepted = digits + ' -.'
-    for element in string:
+    for element in string_input:
         if element not in accepted:
-            print('Invalid input! Only digits accepted')
             return False
         return True
     return False
@@ -23,37 +30,37 @@ def length_correct(list_of_ints, target_length):
 
 
 def input_validator(string_input, required_length):
-    if digits_only_input(string_input):
-        casted_list = split_and_cast_to_list(string_input)
-        if length_correct(casted_list, required_length):
-            return True
-        else:
+    string_copy = string_input
+    while not digits_only_input(string_copy):
+        string_copy = input('Invalid input! Only digits accepted')
+        if string_copy == 'esc':
             return False
-    return False
 
-
-def split_and_cast_to_list(digits_only_string):
-    return list(map(int, digits_only_string.split()))
-
-
-def split_and_cast_to_floats(digits_only_string):
-    return list(map(float, digits_only_string.split()))
-
-
-def process_input(dimensions):
-    if input_validator(dimensions, 2):
-        rows, columns = split_and_cast_to_list(dimensions)
-        matrix = validate_matrix_of_floats(rows, columns)
-        return matrix
+    if digits_only_input(string_copy):
+        casted_list = split_and_cast_to_list(string_copy)
+        if length_correct(casted_list, required_length):
+            return casted_list
+        else:
+            print('Default size [1, 1]:')
+            return [1, 1]
     else:
-        return []
+        return [1, 1]
+
+
+def process_input(user_input):
+    rows, columns = input_validator(user_input, 2)
+    matrix = validate_matrix_of_floats(rows, columns)
+    return matrix
 
 
 def validate_matrix_of_floats(rows, columns):
+    print('Enter matrix:')
     matrix = []
     assigned_rows = 0
     while rows > assigned_rows:
         user_input = input()
+        if user_input == 'esc':
+            return [[0.0]]
         if not digits_only_input(user_input):
             continue
         else:
