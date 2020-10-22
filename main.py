@@ -9,7 +9,9 @@ CONST_INPUT = 'Enter constant: '
 
 
 while True:
-    os.system('cls')
+    
+    
+    
     print('1. Add matrices')
     print('2. Multiply matrix by a constant')
     print('3. Multiply matrices')

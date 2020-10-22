@@ -32,9 +32,10 @@ def length_correct(list_of_ints, target_length):
 def input_validator(string_input, required_length):
     string_copy = string_input
     while not digits_only_input(string_copy):
-        string_copy = input('Invalid input! Only digits accepted')
+        string_copy = input('Invalid input! Only digits accepted! \
+        \n Enter new dimensions or "esc" to escape: ')
         if string_copy == 'esc':
-            return False
+            return [0, 0]
 
     if digits_only_input(string_copy):
         casted_list = split_and_cast_to_list(string_copy)
